@@ -1,0 +1,10 @@
+{{- /*gotype: dandy-library.BookLibrary*/ -}}
+{{range . }}
+    {{- /*gotype: dandy-library.BookLibrary*/ -}}
+        <a href="/book/{{.ID.Int64}}">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer">
+        <div class="text-gray-700 text-base">{{.Title.String}}</div>
+        <div class="text-gray-700 text-base">{{.Author.String}}</div>
+    </div>
+        </a>
+{{end}}

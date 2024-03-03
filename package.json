@@ -1,0 +1,15 @@
+{
+  "name": "dandy-library",
+  "version": "1.0.0",
+  "description": "A server that aims to provide a simple read-only interface to a library created with the android app https://www.handylibrary.com/. It uses the Apps ZIP export feature to access the library data and provide a simple REST API and user interface to access it. Full text search is also supported.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind": "npx tailwindcss -i ./web/assets/style.css -o ./web/assets/output.css --watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

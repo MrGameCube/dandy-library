@@ -105,11 +105,24 @@ func (lib *HandyLibraryDB) queryAllBooks() ([]BookLibrary, error) {
 	return books, nil
 }
 
+func (lib *HandyLibraryDB) getByID(id int64) (BookLibrary, error) {
+	var books []BookLibrary
+	err := lib.db.Select(&books, "SELECT * FROM book_library WHERE _id = ?", id)
+	if err != nil || len(books) == 0 {
+		return BookLibrary{}, err
+	}
+	return books[0], nil
+}
+
 // fullTextSearchBooks performs a full-text search on the book_library table using sqlx.
 func (lib *HandyLibraryDB) fullTextSearchBooks(searchTerm string) ([]BookLibrary, error) {
 	var books []BookLibrary
-	query := "SELECT * FROM book_library_fts WHERE book_library_fts MATCH ?"
-	err := lib.db.Select(&books, query, searchTerm)
+	if len(searchTerm) == 0 {
+		return nil, nil
+	}
+	searchTerm = "%" + searchTerm + "%"
+	query := "SELECT * FROM book_library WHERE Author LIKE ? OR Title LIKE ? OR Summary LIKE ? OR Category LIKE ?"
+	err := lib.db.Select(&books, query, searchTerm, searchTerm, searchTerm, searchTerm)
 	if err != nil {
 		return nil, err
 	}

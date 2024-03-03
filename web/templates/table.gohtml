@@ -1,0 +1,17 @@
+{{- /*gotype: []dandy-library.BookLibrary*/ -}}
+<table>
+    <thead>
+    <tr>
+        <td>Titel</td>
+        <td>Autor</td>
+    </tr>
+    </thead>
+    <tbody>
+    {{range $i,$book :=. }}
+    <tr>
+        <td class="mm-text-clip" title="{{$book.Title.String}}">{{$book.Title.String}}</td>
+        <td>{{$book.Author.String}}</td>
+    </tr>
+    {{end}}
+    </tbody>
+</table>

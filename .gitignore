@@ -1,2 +1,4 @@
 *.db
 .idea
+node_modules
+web/assets/output.css
